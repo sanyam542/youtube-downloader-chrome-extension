@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useEffect } from "react";
+import "./App.css";
 function App() {
+  const [activeTabUrl, setActiveTabUrl] = useState("");
+
+  useEffect(() => {
+    /* eslint-disable no-undef */
+
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      setActiveTabUrl(tabs[0].url);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <a href={"https://ytdl-serve.onrender.com/download?url=" + activeTabUrl}>
+        <button>DOWNLOAD This Video</button>
+      </a>
     </div>
   );
 }
