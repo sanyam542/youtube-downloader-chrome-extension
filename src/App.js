@@ -13,7 +13,9 @@ function App() {
 
   return (
     <div>
-      <a href={"https://ytdl-serve.onrender.com/download?url=" + activeTabUrl}>
+      <a
+        href={"https://yt-dl-server.onrender.com/download?url=" + activeTabUrl}
+      >
         <button>DOWNLOAD This Video</button>
       </a>
     </div>
